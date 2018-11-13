@@ -1,0 +1,5 @@
+<form (ngSubmit)="signIn()">
+  <input type="text" [(ngModel)]="username" [ngModelOptions]="{standalone: true}">
+  <input type="password" [(ngModel)]="password" [ngModelOptions]="{standalone: true}">
+  <button>Login</button>
+</form>
