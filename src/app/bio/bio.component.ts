@@ -7,9 +7,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BioComponent implements OnInit {
 
+  public hidePopup = true;
+
   constructor() { }
+
+  public editBio() {
+    if (this.hidePopup) {
+      this.hidePopup = false;
+    } else {
+      this.hidePopup = true;
+    }
+  }
 
   ngOnInit() {
   }
-
 }
+

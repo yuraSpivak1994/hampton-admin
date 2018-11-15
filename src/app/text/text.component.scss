@@ -1,0 +1,116 @@
+.container {
+  width: 100%;
+  font-family: sans-serif;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+
+  span {
+    color: silver;
+  }
+
+  .row-box {
+    display: flex;
+    margin-top: 20px;
+    flex-direction: column;
+    min-width: 45%;
+
+    .field-video {
+      width: 100%;
+      padding: 3.5vh 25px;
+      display: inline-block;
+      border: 1px solid #ccc;
+      box-sizing: border-box;
+      background-color: #dca5c5;
+      color: white;
+      font-size: 16px;
+    }
+
+    .btn-box {
+      display: flex;
+      width: 100%;
+
+      .save-text-btn,
+      .delete-text-btn,
+      .edit-text-btn {
+        width: 100%;
+        padding: 2.5vh 25px;
+        display: inline-block;
+        border: 1px solid #ccc;
+        background-color: #6e6e6e;
+        color: white;
+        cursor: pointer;
+        margin-top: 5px;
+        font-size: 16px;
+      }
+      .edit-text-btn {
+        background: #becb79;
+      }
+      .delete-text-btn {
+        background: #9b4242;
+      }
+    }
+
+    .inputfile {
+      width: 0.1px;
+      height: 0.1px;
+      opacity: 0;
+      overflow: hidden;
+      position: absolute;
+      z-index: -1;
+    }
+    .inputfile + label {
+      width: 100%;
+      padding: 2.5vh 25px;
+      display: inline-block;
+      border: 1px solid #ccc;
+      box-sizing: border-box;
+      background-color: #dca5c5;
+      color: white;
+      text-align: center;
+      font-size: 30px;
+    }
+
+    .inputfile + label:hover {
+      background-color: #a66c8d;
+      cursor: pointer;
+    }
+  }
+  .popup-text {
+    width: 100%;
+    position: fixed;
+    top: 0;
+    background: white;
+    height: 100vh;
+    z-index: 11111;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .close-image {
+      right: 10px;
+      top: 22px;
+      position: absolute;
+      width: 25px;
+      height: 25px;
+      cursor: pointer;
+    }
+
+    .save-text-btn {
+      width: 100%;
+      padding: 2.5vh 25px;
+      display: inline-block;
+      border: 1px solid #ccc;
+      background-color: #6e6e6e;
+      color: white;
+      cursor: pointer;
+      margin-top: 5px;
+      font-size: 16px;
+    }
+  }
+
+  .hide-popup {
+    height: 0;
+    overflow: hidden;
+  }
+}

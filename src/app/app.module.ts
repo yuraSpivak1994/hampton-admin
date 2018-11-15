@@ -6,11 +6,12 @@ import { BioComponent } from './bio/bio.component';
 import { PortfolioComponent } from './portfolio/portfolio.component';
 import { TextComponent } from './text/text.component';
 import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.component';
-import {RoutingRoutingModule} from "./routing/routing-routing.module";
 import { AuthorizationComponent } from './authorization/authorization.component';
-import {AuthService} from "./authorization/auth.service";
-import {CommonModule} from "@angular/common";
-import {FormsModule} from "@angular/forms";
+import {AuthService} from './authorization/auth.service';
+import {CommonModule} from '@angular/common';
+import {FormsModule} from '@angular/forms';
+import { HeaderComponent } from './header/header.component';
+import {RoutingRoutingModule} from './routing/routing-routing.module';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import {FormsModule} from "@angular/forms";
     PortfolioComponent,
     TextComponent,
     PrivacyPolicyComponent,
-    AuthorizationComponent
+    AuthorizationComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,

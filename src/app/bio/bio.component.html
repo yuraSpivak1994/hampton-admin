@@ -1,3 +1,32 @@
-<p>
-  bio works!
-</p>
+<div class="container">
+  <div class="row-box">
+    <div class="pink-block">
+      <span>save pink block</span>
+      <textarea name="" id="" cols="30" rows="10"></textarea>
+    </div>
+    <div class="white-block">
+      <span>save white block</span>
+      <textarea name="" id="" cols="30" rows="10"></textarea>
+    </div>
+    <div class="btn-box">
+      <button class="save-bio-btn"> save bio</button>
+      <button class="edit-text-btn" (click)="editBio()">edit bio</button>
+    </div>
+  </div>
+  <div class="popup-container" [ngClass]="{'hide-popup': hidePopup}">
+    <div class="close-image" (click)="editBio()">
+      <img src="../../assets/cancel.png" alt="">
+    </div>
+    <div class="row-box">
+      <div class="pink-block">
+        <span>edit pink block</span>
+        <textarea name="" id="" cols="30" rows="10"></textarea>
+      </div>
+      <div class="white-block">
+        <span>edit white block</span>
+        <textarea name="" id="" cols="30" rows="10"></textarea>
+      </div>
+      <button class="save-bio-btn"> save bio</button>
+    </div>
+  </div>
+</div>

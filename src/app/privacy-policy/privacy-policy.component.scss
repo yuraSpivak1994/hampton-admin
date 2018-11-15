@@ -1,0 +1,54 @@
+.container {
+  width: 100%;
+  font-family: sans-serif;
+
+  .row-box {
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    margin: 20px auto;
+
+    .btn-box {
+      display: flex;
+
+      .save-policy-btn,
+      .edit-policy-btn {
+        width: 100%;
+        margin-top: 5px;
+        padding: 2.5vh 25px;
+        display: inline-block;
+        border: 1px solid #ccc;
+        background-color: #6e6e6e;
+        color: white;
+      }
+
+      .edit-policy-btn {
+        background: #becb79;
+      }
+    }
+  }
+  .popup-policy {
+    width: 100%;
+    position: absolute;
+    top: 0;
+    background: white;
+    height: 100vh;
+    z-index: 11111;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .close-image {
+      right: 10px;
+      top: 22px;
+      position: absolute;
+      width: 25px;
+      height: 25px;
+      cursor: pointer;
+    }
+  }
+  .hide-popup {
+    height: 0;
+    overflow: hidden;
+  }
+}

@@ -20,9 +20,9 @@ export class AuthorizationComponent implements OnInit {
     this.auth.authorize(this.username, this.password)
       .subscribe((isConfirmed) => {
         if (isConfirmed) {
-          this.router.navigate(['bio']);
+          this.router.navigate(['header']);
         } else {
-          alert('WRONG CREDENTIALS!!!!!!!!')
+          alert('WRONG CREDENTIALS!!!!!!!!');
         }
       });
   }

@@ -7,7 +7,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PrivacyPolicyComponent implements OnInit {
 
+  public popupPrivacy = true;
+
   constructor() { }
+
+  public trigerPopup() {
+    if (this.popupPrivacy) {
+      this.popupPrivacy = false;
+    } else {
+      this.popupPrivacy = true;
+    }
+  }
 
   ngOnInit() {
   }

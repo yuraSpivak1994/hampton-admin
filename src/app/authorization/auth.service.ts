@@ -9,6 +9,6 @@ export class AuthService {
   constructor() { }
 
   public authorize(username: string, password: string): Observable<any> {
-    return username === 'admin' && password === 'admin' ? of(true) : of(false);
+    return username === 'yura' && password === '1111' ? of(true) : of(false);
   }
 }

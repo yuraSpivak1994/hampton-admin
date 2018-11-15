@@ -1,5 +1,13 @@
-<form (ngSubmit)="signIn()">
-  <input type="text" [(ngModel)]="username" [ngModelOptions]="{standalone: true}">
-  <input type="password" [(ngModel)]="password" [ngModelOptions]="{standalone: true}">
-  <button>Login</button>
-</form>
+<div class="container">
+    <div class="form-container">
+      <div class="photo-block">
+        <img src="../../assets/login/lock.png" alt="lock">
+      </div>
+    <form (ngSubmit)="signIn()">
+      <input type="text" [(ngModel)]="username" [ngModelOptions]="{standalone: true}" class="field">
+      <input type="password" [(ngModel)]="password" [ngModelOptions]="{standalone: true}" class="field">
+      <button class="btn-login">Login</button>
+    </form>
+  </div>
+</div>
+
