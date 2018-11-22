@@ -36,6 +36,21 @@
       background-color: rgb(245, 98, 98);
       border: 1px solid rgb(245, 98, 98);
       color: white;
+      cursor: pointer;
     }
+    [disabled]{
+      border: 1px solid #999999;
+      background-color: #be9999;
+      color: #666666;
+      cursor: not-allowed;
+    }
+  }
+  .has-error {
+    border: 1px solid rgba(213, 0, 0, 0.51)!important;
+  }
+  .error-message {
+    font-family: sans-serif;
+    color: rgba(213, 0, 0, 0.51);
+    margin: 5px;
   }
 }
