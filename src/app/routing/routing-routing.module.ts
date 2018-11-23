@@ -1,19 +1,23 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import {BioComponent} from '../bio/bio.component';
-import {PrivacyPolicyComponent} from '../privacy-policy/privacy-policy.component';
-import {PortfolioComponent} from '../portfolio/portfolio.component';
-import {TextComponent} from '../text/text.component';
-import {AuthorizationComponent} from '../authorization/authorization.component';
-import {HeaderComponent} from '../header/header.component';
+import {BioComponent} from '../modules/main/bio/bio.component';
+import {TextComponent} from '../modules/main/text/text.component';
+import {PrivacyPolicyComponent} from '../modules/main/privacy-policy/privacy-policy.component';
+import {AuthorizationComponent} from '../modules/authorization/authorization.component';
+import {PortfolioComponent} from '../modules/main/portfolio/portfolio.component';
+import {MainComponent} from '../modules/main/main.component';
+import {UserGuard} from '../shared/guards/user.guard';
+
 
 const routes: Routes = [
-  {path: 'bio', component: BioComponent},
-  {path: 'text', component: TextComponent},
-  {path: 'privacy-policy', component: PrivacyPolicyComponent},
-  {path: 'portfolio', component: PortfolioComponent},
+  {path: '', redirectTo: '/main/bio', pathMatch: 'full'},
   {path: 'login', component: AuthorizationComponent},
-  {path: 'header', component: HeaderComponent}
+  {path: 'main', component: MainComponent, canActivate: [UserGuard], children: [
+      {path: 'bio', component: BioComponent},
+      {path: 'text', component: TextComponent},
+      {path: 'privacy-policy', component: PrivacyPolicyComponent},
+      {path: 'portfolio', component: PortfolioComponent}
+    ]}
 ];
 
 @NgModule({

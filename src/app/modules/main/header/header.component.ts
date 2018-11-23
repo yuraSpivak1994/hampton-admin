@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {UserService} from '../shared/services/user.service';
+import {UserService} from '../../../shared/services/user.service';
 
 @Component({
   selector: 'app-header',
@@ -7,16 +7,15 @@ import {UserService} from '../shared/services/user.service';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-
-  public isLogin: boolean;
-
   constructor(private userService: UserService) {
   }
 
   ngOnInit() {
-    this.userService.getHeader().subscribe(res => {
-      this.isLogin = res.isLogin;
-    });
+
+  }
+
+  logOut() {
+    this.userService.logOut();
   }
 
 }

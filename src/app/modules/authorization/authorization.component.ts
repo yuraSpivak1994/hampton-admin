@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {UserService} from '../shared/services/user.service';
+import {UserService} from '../../shared/services/user.service';
 
 @Component({
   selector: 'app-authorization',
@@ -32,20 +32,16 @@ export class AuthorizationComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.userService.getHeader().next({isLogin: false});
     this.validateFields();
   }
 
   onSubmit(login, password) {
-    this.userService.getUserByLogin(login, password).subscribe(res => {
+    this.userService.getUserByLogin(login, password).subscribe((res: any) => {
       this.userService.setAuthData({
-        token: res,
+        token: res.accessToken,
         role: 'admin'
       });
-      this.userService.getHeader().next({isLogin: true});
-      this.router.navigate(['./bio']);
     }, err => {
-      this.router.navigate(['./login']);
     });
   }
 }
