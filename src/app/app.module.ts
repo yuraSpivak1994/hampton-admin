@@ -7,12 +7,12 @@ import { PortfolioComponent } from './portfolio/portfolio.component';
 import { TextComponent } from './text/text.component';
 import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.component';
 import { AuthorizationComponent } from './authorization/authorization.component';
-import {AuthService} from './authorization/auth.service';
 import {CommonModule} from '@angular/common';
 import {FormsModule} from '@angular/forms';
 import { HeaderComponent } from './header/header.component';
 import {RoutingRoutingModule} from './routing/routing-routing.module';
 import { SharedModule } from './shared/shared.module';
+import {HttpClientModule} from '@angular/common/http';
 
 
 @NgModule({
@@ -30,9 +30,10 @@ import { SharedModule } from './shared/shared.module';
     RoutingRoutingModule,
     CommonModule,
     FormsModule,
-    SharedModule
+    SharedModule,
+    HttpClientModule
   ],
-  providers: [AuthService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

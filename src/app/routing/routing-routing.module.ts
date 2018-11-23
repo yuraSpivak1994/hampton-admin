@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import {BioComponent} from "../bio/bio.component";
-import {PrivacyPolicyComponent} from "../privacy-policy/privacy-policy.component";
-import {PortfolioComponent} from "../portfolio/portfolio.component";
-import {TextComponent} from "../text/text.component";
-import {AuthorizationComponent} from "../authorization/authorization.component";
+import {BioComponent} from '../bio/bio.component';
+import {PrivacyPolicyComponent} from '../privacy-policy/privacy-policy.component';
+import {PortfolioComponent} from '../portfolio/portfolio.component';
+import {TextComponent} from '../text/text.component';
+import {AuthorizationComponent} from '../authorization/authorization.component';
 import {HeaderComponent} from '../header/header.component';
 
 const routes: Routes = [
