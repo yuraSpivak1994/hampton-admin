@@ -16,6 +16,9 @@ import {PrivacyPolicyComponent} from './modules/main/privacy-policy/privacy-poli
 import {HeaderComponent} from './modules/main/header/header.component';
 import {UserGuard} from './shared/guards/user.guard';
 import {TokenInterceptor} from './shared/interceptor/token.interceptor';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {EditorModule} from 'primeng/editor';
+import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
 
 
 @NgModule({
@@ -35,7 +38,10 @@ import {TokenInterceptor} from './shared/interceptor/token.interceptor';
     CommonModule,
     FormsModule,
     SharedModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    EditorModule,
+    FroalaEditorModule.forRoot(), FroalaViewModule.forRoot()
   ],
   providers: [UserGuard,
     {

@@ -88,3 +88,11 @@
 .has-error {
   background: #9b4242;
 }
+::ng-deep {
+  .fr-box.fr-basic .fr-element {
+    min-height: 100px;
+  }
+  .fr-toolbar {
+    border-top: 5px solid #dca5c5;
+  }
+}

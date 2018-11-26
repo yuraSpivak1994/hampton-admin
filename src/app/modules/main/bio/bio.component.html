@@ -1,25 +1,27 @@
 <div class="container">
-  <form [formGroup] = "getFormBio">
     <div class="row-box">
       <div class="pink-block">
         <span>save pink block</span>
         <textarea
           name="" id=""
           cols="30" rows="10"
-          formControlName="pinkBlock"
-          [ngClass]="{'has-error': getFormBio.get('pinkBlock').invalid && getFormBio.get('pinkBlock').touched}"
+          [froalaEditor]
+          [(ngModel)]="fieldPinkBlock"
         ></textarea>
       </div>
       <div class="white-block">
         <span>save white block</span>
-        <textarea name="" id="" cols="30" rows="10"></textarea>
+        <textarea
+          name="" id="" cols="30" rows="10"
+          [froalaEditor]></textarea>
+
       </div>
       <div class="btn-box">
-        <button class="save-bio-btn"> save bio</button>
+        <button class="save-bio-btn" (click)="onSubmit()" [disabled]="disabledSaveBtn"> save bio</button>
         <button type="submit" class="edit-text-btn" (click)="editBio()">edit bio</button>
       </div>
     </div>
-  </form>
+
   <div class="popup-container" [ngClass]="{'hide-popup': hidePopup}">
     <div class="close-image" (click)="editBio()">
       <img src="../../assets/cancel.png" alt="">
@@ -33,9 +35,7 @@
         <span>edit white block</span>
         <textarea name="" id="" cols="30" rows="10"></textarea>
       </div>
-      <button class="save-bio-btn"
-              [disabled]="getFormBio.invalid"
-      > save bio</button>
+      <button class="save-bio-btn"> save bio</button>
     </div>
   </div>
 </div>

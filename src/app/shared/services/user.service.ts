@@ -41,10 +41,7 @@ export class UserService {
   }
 
   getBioContent () {
-    return this.http.get(`${this.apiUrl}/content` )
-      .subscribe(data => {
-        console.log(data);
-      });
+    return this.http.get(`${this.apiUrl}/content`);
   }
 
   initAuthorization(): void {
