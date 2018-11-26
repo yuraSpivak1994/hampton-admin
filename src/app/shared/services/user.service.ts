@@ -40,12 +40,19 @@ export class UserService {
     return this.http.post(`${this.apiUrl}account/token`, {login: login, password: password});
   }
 
+  getBioContent () {
+    return this.http.get(`${this.apiUrl}/content` )
+      .subscribe(data => {
+        console.log(data);
+      });
+  }
+
   initAuthorization(): void {
     const userInfo = localStorage.AuthUser;
     this._authData = userInfo ? JSON.parse(userInfo) : null;
   }
 
-  isLoggedIn() {
+  get isLoggedIn() {
     return !!this._authData;
   }
 

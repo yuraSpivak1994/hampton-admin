@@ -73,9 +73,18 @@
       margin-top: 5px;
       font-size: 16px;
     }
+    [disabled]{
+      border: 1px solid #999999;
+      background-color: #be9999;
+      color: #666666;
+      cursor: not-allowed;
+    }
   }
   .hide-popup {
     height: 0;
     overflow: hidden;
   }
+}
+.has-error {
+  background: #9b4242;
 }

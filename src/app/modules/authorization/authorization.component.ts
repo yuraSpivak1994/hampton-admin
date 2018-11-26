@@ -10,19 +10,11 @@ import {UserService} from '../../shared/services/user.service';
 })
 export class AuthorizationComponent implements OnInit {
   public form: FormGroup;
-  public username: object;
-  public password: object;
-  public userAutorization: object;
+  public  getFormBio: FormGroup;
 
 
   constructor(private router: Router,
-              private userService: UserService) {
-    this.userAutorization = [
-      {login: ''},
-      {password: ''}
-    ];
-
-  }
+              private userService: UserService) {}
 
   validateFields() {
     this.form = new FormGroup({
@@ -44,4 +36,5 @@ export class AuthorizationComponent implements OnInit {
     }, err => {
     });
   }
+
 }
