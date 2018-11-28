@@ -1,54 +1,34 @@
 <div class="container">
-  <div class="row-box">
+  <div class="togle-rows" (click)="trigerUploader()">
+    <img src="./../../../../assets/change.png" alt="change">
+  </div>
+  <div class="row-box" [ngClass]="{'hide-file-uploader': hideRowImage}">
+  <form (ngSubmit)="validateFields()">
     <span>upload image</span>
-    <input type="file" name="file" id="file" class="inputfile"/>
+    <input type="file" name="file" id="file" class="inputfile"
+           [(ngModel)]="content.urlFirst"
+           />
     <label for="file">+</label>
-    <textarea name="" id="" cols="30" rows="10"></textarea>
-    <input type="file" name="file" id="file" class="inputfile"/>
-    <label for="file">+</label>
-    <div class="btn-box">
-      <button class="save-text-btn">save text</button>
-      <button class="delete-text-btn">delete</button>
-      <button class="edit-text-btn" (click)="trigerPopupimage()">edit</button>
-    </div>
-  </div>
-  <div class="popup-text" [ngClass]="{'hide-popup': hidePopupImage}">
-    <div class="close-image" (click)="trigerPopupimage()">
-      <img src="../../assets/cancel.png" alt="">
-    </div>
-    <div class="row-box">
-      <input type="file" name="file" id="file" class="inputfile"/>
-      <label for="file">+</label>
-      <textarea cols="30" rows="10"></textarea>
-      <input type="file" name="file" id="file" class="inputfile"/>
-      <label for="file">+</label>
-      <button class="save-text-btn">save text</button>
-    </div>
-  </div>
+    <textarea
 
-  <div class="row-box">
+      [froalaEditor]='options'
+      [(froalaModel)]="content.description"></textarea>
+    <input type="file" name="file2" id="file2" class="inputfile"
+           [(ngModel)]="content.urlSecond"
+           />
+    <label for="file2">+</label>
+    <div class="btn-box">
+      <button class="save-text-btn" (click)="test()">save text</button>
+    </div>
+  </form>
+  </div>
+  <div class="row-box" [ngClass]="{'hide-url-uploader': hideRowField}">
     <span>past url</span>
-    <input type="text" class="field-video">
-    <textarea cols="30" rows="10"></textarea>
-    <input type="text" class="field-video">
+    <input type="text" class="field-video" [(ngModel)]="content.urlFirst">
+    <textarea [froalaEditor]='options' [(froalaModel)]="content.description"></textarea>
+    <input type="text" class="field-video" [(ngModel)]="content.urlSecond">
     <div class="btn-box">
       <button class="save-text-btn">save text</button>
-      <button class="delete-text-btn">delete</button>
-      <button class="edit-text-btn" (click)="trigerPopupfield()">edit</button>
-    </div>
-  </div>
-  <div class="popup-text" [ngClass]="{'hide-popup': hidePopupField}">
-    <div class="close-image" (click)="trigerPopupfield()">
-      <img src="../../assets/cancel.png" alt="">
-    </div>
-    <div class="row-box">
-      <span>past url</span>
-      <input type="text" class="field-video">
-      <textarea cols="30" rows="10"></textarea>
-      <input type="text" class="field-video">
-      <div class="btn-box">
-        <button class="save-text-btn">save text</button>
-      </div>
     </div>
   </div>
 </div>

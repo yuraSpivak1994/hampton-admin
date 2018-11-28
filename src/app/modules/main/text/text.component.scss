@@ -5,19 +5,25 @@
   justify-content: space-around;
   flex-wrap: wrap;
 
+  .togle-rows {
+    position: absolute;
+    margin: 20px auto;
+    cursor: pointer;
+  }
+
   span {
     color: silver;
   }
 
   .row-box {
     display: flex;
-    margin-top: 20px;
+    margin-top: 60px;
     flex-direction: column;
     min-width: 45%;
 
     .field-video {
       width: 100%;
-      padding: 3.5vh 25px;
+      padding: 3.1vh 25px;
       display: inline-block;
       border: 1px solid #ccc;
       box-sizing: border-box;
@@ -113,4 +119,23 @@
     height: 0;
     overflow: hidden;
   }
+  .hide-file-uploader {
+    display: none;
+  }
+
+  .hide-url-uploader {
+    display: none;
+  }
+}
+::ng-deep {
+  .fr-box.fr-basic .fr-element {
+    min-height: 100px;
+  }
+  .fr-quick-insert {
+    display: none;
+  }
+  .fr-toolbar {
+    border-top: 5px solid #824040;
+  }
+
 }

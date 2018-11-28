@@ -1,13 +1,13 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
 
-import { AppComponent } from './app.component';
+import {AppComponent} from './app.component';
 import {CommonModule} from '@angular/common';
 import {FormsModule} from '@angular/forms';
 import {RoutingRoutingModule} from './routing/routing-routing.module';
-import { SharedModule } from './shared/shared.module';
+import {SharedModule} from './shared/shared.module';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
-import { MainComponent } from './modules/main/main.component';
+import {MainComponent} from './modules/main/main.component';
 import {AuthorizationComponent} from './modules/authorization/authorization.component';
 import {BioComponent} from './modules/main/bio/bio.component';
 import {PortfolioComponent} from './modules/main/portfolio/portfolio.component';
@@ -18,7 +18,7 @@ import {UserGuard} from './shared/guards/user.guard';
 import {TokenInterceptor} from './shared/interceptor/token.interceptor';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {EditorModule} from 'primeng/editor';
-import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
+import {FroalaEditorModule, FroalaViewModule} from 'angular-froala-wysiwyg';
 
 
 @NgModule({
@@ -41,7 +41,8 @@ import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
     HttpClientModule,
     BrowserAnimationsModule,
     EditorModule,
-    FroalaEditorModule.forRoot(), FroalaViewModule.forRoot()
+    FroalaEditorModule.forRoot(),
+    FroalaViewModule.forRoot()
   ],
   providers: [UserGuard,
     {
@@ -51,4 +52,5 @@ import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
     }],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}

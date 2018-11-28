@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-text',
@@ -7,27 +8,51 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TextComponent implements OnInit {
 
-  public hidePopupImage = true;
-  public hidePopupField = true;
+  public hideRowImage: boolean;
+  public hideRowField: boolean
+  public form: FormGroup;
+  public options: Object = {
+    placeholderText: 'Edit Your Content Here!',
+    charCounterCount: false,
+    toolbarButtons: ['|', 'bold', '|', 'underline', 'strikeThrough', '|', '|', '|',
+      'fontFamily', 'fontSize', 'color', '|', '|', 'paragraphStyle', 'lineHeight', '|', '|',
+      '|', '|', '|', '|', '|', '|', '-', '|', '|', '-', '|',
+      '|', '|', '|', '|', '|', '|',
+      '|', '|', '|', '|', '|', '|', '|', '|', '|', '|', '|', '|']
+  };
+  public content: any;
+  constructor() {
+    this.hideRowField = true;
+    this.hideRowImage = false;
+    this.content = {
+      urlFirst: '',
+      description: '',
+      urlSecond: ''
+    };
+  }
 
-  constructor() { }
+  validateFields() {
+    this.form = new FormGroup({
+      'login': new FormControl(null, [Validators.required]),
+      'password': new FormControl(null, [Validators.required, Validators.minLength(4)])
+    });
+  }
 
-  public trigerPopupimage() {
-    if (this.hidePopupImage) {
-      this.hidePopupImage = false;
+  public trigerUploader() {
+    if (this.hideRowField) {
+      this.hideRowImage = true;
+      this.hideRowField = false;
     } else {
-      this.hidePopupImage = true;
+      this.hideRowImage = false;
+      this.hideRowField = true;
     }
   }
-  public trigerPopupfield() {
-    if (this.hidePopupField) {
-      this.hidePopupField = false;
-    } else {
-      this.hidePopupField = true;
-    }
+  public test() {
+    console.log(this.content);
   }
 
   ngOnInit() {
+    this.validateFields();
   }
 
 }

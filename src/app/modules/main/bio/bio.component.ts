@@ -1,18 +1,27 @@
-import {Component, OnChanges, OnInit, SimpleChanges} from '@angular/core';
+import {Component, OnChanges, OnInit} from '@angular/core';
 import {UserService} from '../../../shared/services/user.service';
-import {FormControl, FormGroup, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-bio',
   templateUrl: './bio.component.html',
   styleUrls: ['./bio.component.scss']
 })
-export class BioComponent implements OnInit {
+export class BioComponent implements OnInit, OnChanges {
 
   public hidePopup = true;
-  public getFormBio: FormGroup;
   public text: string;
   public fieldPinkBlock: string;
+  public fieldWhiteBlock: string
+  public contentBio: any;
+  public options: Object = {
+    placeholderText: 'Edit Your Content Here!',
+    charCounterCount: false,
+    toolbarButtons: ['|', 'bold', '|', 'underline', 'strikeThrough', '|', '|', '|',
+      'fontFamily', 'fontSize', 'color', '|', '|', 'paragraphStyle', 'lineHeight', '|', '|',
+      '|', '|', '|', '|', '|', '|', '-', '|', '|', '-', '|',
+      '|', '|', '|', '|', '|', '|',
+      '|', '|', '|', '|', '|', '|', '|', '|', '|', '|', '|', '|']
+  }
 
 
   public disabledSaveBtn: boolean;
@@ -20,6 +29,10 @@ export class BioComponent implements OnInit {
   constructor(private userService: UserService) {
 
     this.disabledSaveBtn = false;
+    this.contentBio = {
+      pinkBlockText: '',
+      whiteBlockText: ''
+    };
   }
 
   public editBio() {
@@ -29,32 +42,29 @@ export class BioComponent implements OnInit {
       this.hidePopup = true;
     }
   }
-
-  validFields() {
-    debugger;
-    if (!this.fieldPinkBlock) {
-      this.disabledSaveBtn = true;
-    }
+  innerTextInPinkBlock(data) {
+    this.contentBio.pinkBlockText = data.pinkBlockText;
+    this.contentBio.whiteBlockText = data.whiteBlockText;
+    console.log(this.contentBio);
   }
 
-  getFormSubmit() {
-    this.getFormBio = new FormGroup({
-      'pinkBlock': new FormControl(null, [Validators.required]),
-      'whiteBlock': new FormControl(null, [Validators.required])
+  public saveChanges(contentBio) {
+    this.userService.editBioContent(contentBio).subscribe((res: any) => {
+      this.contentBio.pinkBlockText = res.pinkBlockText;
+      this.contentBio.whiteBlockText = res.whiteBlockText;
+    }, err => {
     });
   }
 
-  onSubmit() {
+  ngOnInit() {
     this.userService.getBioContent()
       .subscribe(data => {
+    this.innerTextInPinkBlock(data);
         console.log(data);
       });
-    this.validFields();
   }
+  ngOnChanges() {
 
-  ngOnInit() {
-    this.getFormSubmit();
-    this.validFields();
   }
 }
 

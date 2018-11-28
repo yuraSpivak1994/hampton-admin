@@ -1,27 +1,25 @@
 <div class="container">
-    <div class="row-box">
-      <div class="pink-block">
-        <span>save pink block</span>
-        <textarea
-          name="" id=""
-          cols="30" rows="10"
-          [froalaEditor]
-          [(ngModel)]="fieldPinkBlock"
-        ></textarea>
-      </div>
-      <div class="white-block">
-        <span>save white block</span>
-        <textarea
-          name="" id="" cols="30" rows="10"
-          [froalaEditor]></textarea>
-
-      </div>
-      <div class="btn-box">
-        <button class="save-bio-btn" (click)="onSubmit()" [disabled]="disabledSaveBtn"> save bio</button>
-        <button type="submit" class="edit-text-btn" (click)="editBio()">edit bio</button>
-      </div>
+  <div class="row-box">
+    <div class="pink-block">
+      <span>save pink block</span>
+      <textarea
+        [froalaEditor]="options"
+        [(ngModel)]="contentBio.pinkBlockText"></textarea>
     </div>
+    <div class="white-block">
+      <span>save white block</span>
+      <textarea
+        [(ngModel)]="contentBio.whiteBlockText"
+        [froalaEditor]="options"></textarea>
+    </div>
+    <div></div>
+    <div class="btn-box">
+      <!--<button class="save-bio-btn" (click)="onSubmit()" [disabled]="!fieldPinkBlock"> save bio</button>-->
+      <button class="save-bio-btn" (click)="saveChanges(contentBio)"> save bio</button>
 
+      <button type="submit" class="edit-text-btn" (click)="editBio()">edit bio</button>
+    </div>
+  </div>
   <div class="popup-container" [ngClass]="{'hide-popup': hidePopup}">
     <div class="close-image" (click)="editBio()">
       <img src="../../assets/cancel.png" alt="">

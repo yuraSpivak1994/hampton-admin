@@ -41,7 +41,10 @@ export class UserService {
   }
 
   getBioContent () {
-    return this.http.get(`${this.apiUrl}/content`);
+    return this.http.get(`${this.apiUrl}biography`);
+  }
+  editBioContent(contentBio) {
+    return this.http.put(`${this.apiUrl}biography`, {contentBio});
   }
 
   initAuthorization(): void {
