@@ -43,8 +43,14 @@ export class UserService {
   getBioContent () {
     return this.http.get(`${this.apiUrl}biography`);
   }
-  editBioContent(contentBio) {
-    return this.http.put(`${this.apiUrl}biography`, {contentBio});
+  updateBio(clonedData) {
+    clonedData = {
+      ...clonedData,
+      id: '8584c48fb3',
+      authorId: '0000001'
+    };
+
+    return this.http.put(`${this.apiUrl}biography`, clonedData);
   }
 
   initAuthorization(): void {

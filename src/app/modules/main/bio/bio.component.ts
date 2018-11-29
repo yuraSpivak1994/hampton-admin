@@ -8,12 +8,14 @@ import {UserService} from '../../../shared/services/user.service';
 })
 export class BioComponent implements OnInit, OnChanges {
 
-  public hidePopup = true;
   public text: string;
-  public fieldPinkBlock: string;
-  public fieldWhiteBlock: string
-  public contentBio: any;
-  public options: Object = {
+  public contentBio: any = {
+    pinkBlockText: '',
+    whiteBlockText: '',
+  };
+
+
+  public options: any = {
     placeholderText: 'Edit Your Content Here!',
     charCounterCount: false,
     toolbarButtons: ['|', 'bold', '|', 'underline', 'strikeThrough', '|', '|', '|',
@@ -21,48 +23,33 @@ export class BioComponent implements OnInit, OnChanges {
       '|', '|', '|', '|', '|', '|', '-', '|', '|', '-', '|',
       '|', '|', '|', '|', '|', '|',
       '|', '|', '|', '|', '|', '|', '|', '|', '|', '|', '|', '|']
-  }
-
-
+  };
   public disabledSaveBtn: boolean;
 
   constructor(private userService: UserService) {
 
     this.disabledSaveBtn = false;
-    this.contentBio = {
-      pinkBlockText: '',
-      whiteBlockText: ''
-    };
   }
 
-  public editBio() {
-    if (this.hidePopup) {
-      this.hidePopup = false;
-    } else {
-      this.hidePopup = true;
-    }
-  }
-  innerTextInPinkBlock(data) {
-    this.contentBio.pinkBlockText = data.pinkBlockText;
-    this.contentBio.whiteBlockText = data.whiteBlockText;
-    console.log(this.contentBio);
-  }
-
-  public saveChanges(contentBio) {
-    this.userService.editBioContent(contentBio).subscribe((res: any) => {
-      this.contentBio.pinkBlockText = res.pinkBlockText;
-      this.contentBio.whiteBlockText = res.whiteBlockText;
+  public saveChanges() {
+    this.userService.updateBio(this.contentBio).subscribe((res: any) => {
+      this.getBio();
     }, err => {
+      alert(`ERORKA BLYAT`);
     });
   }
 
   ngOnInit() {
+    this.getBio();
+  }
+
+  private getBio(): void {
     this.userService.getBioContent()
       .subscribe(data => {
-    this.innerTextInPinkBlock(data);
-        console.log(data);
+        this.contentBio = data;
       });
   }
+
   ngOnChanges() {
 
   }
