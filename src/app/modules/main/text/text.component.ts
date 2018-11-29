@@ -1,16 +1,16 @@
-import { Component, OnInit } from '@angular/core';
-import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {Component, OnChanges, OnInit} from '@angular/core';
+import {TextPageContent} from '../../../shared/models/user.model';
+import {UserService} from '../../../shared/services/user.service';
 
 @Component({
   selector: 'app-text',
   templateUrl: './text.component.html',
   styleUrls: ['./text.component.scss']
 })
-export class TextComponent implements OnInit {
+export class TextComponent implements OnInit, OnChanges {
 
   public hideRowImage: boolean;
-  public hideRowField: boolean
-  public form: FormGroup;
+  public hideRowField: boolean;
   public options: Object = {
     placeholderText: 'Edit Your Content Here!',
     charCounterCount: false,
@@ -21,22 +21,12 @@ export class TextComponent implements OnInit {
       '|', '|', '|', '|', '|', '|', '|', '|', '|', '|', '|', '|']
   };
   public content: any;
-  constructor() {
+  constructor(private userService: UserService) {
     this.hideRowField = true;
     this.hideRowImage = false;
-    this.content = {
-      urlFirst: '',
-      description: '',
-      urlSecond: ''
-    };
   }
+  public textContent = new TextPageContent();
 
-  validateFields() {
-    this.form = new FormGroup({
-      'login': new FormControl(null, [Validators.required]),
-      'password': new FormControl(null, [Validators.required, Validators.minLength(4)])
-    });
-  }
 
   public trigerUploader() {
     if (this.hideRowField) {
@@ -47,12 +37,24 @@ export class TextComponent implements OnInit {
       this.hideRowField = true;
     }
   }
-  public test() {
-    console.log(this.content);
+  private getText(): void {
+    this.userService.getTextContent()
+      .subscribe((data: TextPageContent) => {
+        this.textContent =  data;
+      });
+  }
+  public saveChanges() {
+    this.userService.updateText(this.textContent).subscribe((res: any) => {
+      this.getText();
+    }, err => {
+      alert(`ERORKA`);
+    });
   }
 
   ngOnInit() {
-    this.validateFields();
+    this.getText();
+  }
+  ngOnChanges() {
   }
 
 }

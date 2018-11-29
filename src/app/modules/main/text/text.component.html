@@ -2,31 +2,43 @@
   <div class="togle-rows" (click)="trigerUploader()">
     <img src="./../../../../assets/change.png" alt="change">
   </div>
-  <div class="row-box" [ngClass]="{'hide-file-uploader': hideRowImage}">
-  <form (ngSubmit)="validateFields()">
+  <div
+    class="row-box"
+    [ngClass]="{'hide-file-uploader': hideRowImage}">
     <span>upload image</span>
-    <input type="file" name="file" id="file" class="inputfile"
-           [(ngModel)]="content.urlFirst"
-           />
+    <input
+      type="text"
+      class="field-video"
+      placeholder="{{textContent.title}}"
+      [(ngModel)]="textContent.title">
+    <input
+      type="file"
+      name="file"
+      id="file"
+      class="inputfile"
+      [(ngModel)]="textContent.topMediaBlock"
+    />
     <label for="file">+</label>
     <textarea
-
       [froalaEditor]='options'
-      [(froalaModel)]="content.description"></textarea>
-    <input type="file" name="file2" id="file2" class="inputfile"
-           [(ngModel)]="content.urlSecond"
-           />
+      [(froalaModel)]="textContent.description"></textarea>
+    <input
+      type="file"
+      name="file2"
+      id="file2"
+      class="inputfile"
+      [(ngModel)]="textContent.bottomMediaBlock"/>
     <label for="file2">+</label>
     <div class="btn-box">
-      <button class="save-text-btn" (click)="test()">save text</button>
+      <button class="save-text-btn" (click)="saveChanges()">save text</button>
     </div>
-  </form>
   </div>
   <div class="row-box" [ngClass]="{'hide-url-uploader': hideRowField}">
     <span>past url</span>
-    <input type="text" class="field-video" [(ngModel)]="content.urlFirst">
-    <textarea [froalaEditor]='options' [(froalaModel)]="content.description"></textarea>
-    <input type="text" class="field-video" [(ngModel)]="content.urlSecond">
+    <input type="text" class="field-video" placeholder="header" [(ngModel)]="textContent.title">
+    <input type="text" class="field-video" [(ngModel)]="textContent.topMediaBlock">
+    <textarea [froalaEditor]='options' [(froalaModel)]="textContent.description"></textarea>
+    <input type="text" class="field-video" [(ngModel)]="textContent.bottomMediaBlock">
     <div class="btn-box">
       <button class="save-text-btn">save text</button>
     </div>

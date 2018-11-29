@@ -1,6 +1,10 @@
-export class User {
-  constructor(
-    public login: any,
-    public password: any
-  ) {}
+export class TextPageContent {
+
+  title = 'lol';
+  topMediaBlock: any;
+  description: string;
+  bottomMediaBlock: any;
+
+constructor() {
+  }
 }

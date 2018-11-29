@@ -30,7 +30,7 @@ import {FroalaEditorModule, FroalaViewModule} from 'angular-froala-wysiwyg';
     PrivacyPolicyComponent,
     AuthorizationComponent,
     HeaderComponent,
-    MainComponent
+    MainComponent,
   ],
   imports: [
     BrowserModule,
@@ -42,7 +42,7 @@ import {FroalaEditorModule, FroalaViewModule} from 'angular-froala-wysiwyg';
     BrowserAnimationsModule,
     EditorModule,
     FroalaEditorModule.forRoot(),
-    FroalaViewModule.forRoot()
+    FroalaViewModule.forRoot(),
   ],
   providers: [UserGuard,
     {

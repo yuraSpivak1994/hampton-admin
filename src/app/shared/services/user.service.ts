@@ -49,8 +49,20 @@ export class UserService {
       id: '8584c48fb3',
       authorId: '0000001'
     };
-
     return this.http.put(`${this.apiUrl}biography`, clonedData);
+  }
+
+  getTextContent () {
+    return this.http.get(`${this.apiUrl}text`);
+  }
+  updateText(clonedData) {
+    debugger
+    clonedData = {
+      ...clonedData,
+      id: '8584c48fb3',
+      authorId: '0000001'
+    };
+    return this.http.put(`${this.apiUrl}text`, clonedData);
   }
 
   initAuthorization(): void {
@@ -64,10 +76,6 @@ export class UserService {
 
   get authData() {
     return this._authData;
-  }
-
-  test() {
-    return this.http.get(`${this.apiUrl}content/test`);
   }
 
 }
