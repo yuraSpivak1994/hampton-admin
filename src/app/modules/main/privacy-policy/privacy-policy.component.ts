@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {UserService} from '../../../shared/services/user.service';
 
 @Component({
   selector: 'app-privacy-policy',
@@ -7,17 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PrivacyPolicyComponent implements OnInit {
 
-  public popupPrivacy = true;
+  public options: any = {
+    placeholderText: 'Edit Your Content Here!',
+    charCounterCount: false,
+    toolbarButtons: ['|', 'bold', '|', 'underline', 'strikeThrough', '|', '|', '|',
+      'fontFamily', 'fontSize', 'color', '|', '|', 'paragraphStyle', 'lineHeight', '|', '|',
+      '|', '|', '|', '|', '|', '|', '-', '|', '|', '-', '|',
+      '|', '|', '|', '|', '|', '|',
+      '|', '|', '|', '|', '|', '|', '|', '|', '|', '|', '|', '|']
+  };
+  constructor(private userService: UserService) { }
 
-  constructor() { }
-
-  public trigerPopup() {
-    if (this.popupPrivacy) {
-      this.popupPrivacy = false;
-    } else {
-      this.popupPrivacy = true;
-    }
-  }
 
   ngOnInit() {
   }

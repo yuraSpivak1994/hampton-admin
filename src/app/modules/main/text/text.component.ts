@@ -1,17 +1,18 @@
 import {Component, OnChanges, OnInit} from '@angular/core';
 import {TextPageContent} from '../../../shared/models/user.model';
 import {UserService} from '../../../shared/services/user.service';
+import {UploadImg} from '../../../shared/classes/upload-image';
 
 @Component({
   selector: 'app-text',
   templateUrl: './text.component.html',
   styleUrls: ['./text.component.scss']
 })
-export class TextComponent implements OnInit, OnChanges {
+export class TextComponent extends UploadImg implements OnInit, OnChanges {
 
   public hideRowImage: boolean;
   public hideRowField: boolean;
-  public options: Object = {
+  public configs: Object = {
     placeholderText: 'Edit Your Content Here!',
     charCounterCount: false,
     toolbarButtons: ['|', 'bold', '|', 'underline', 'strikeThrough', '|', '|', '|',
@@ -22,11 +23,11 @@ export class TextComponent implements OnInit, OnChanges {
   };
   public content: any;
   constructor(private userService: UserService) {
+    super();
     this.hideRowField = true;
     this.hideRowImage = false;
   }
   public textContent = new TextPageContent();
-
 
   public trigerUploader() {
     if (this.hideRowField) {
@@ -37,6 +38,8 @@ export class TextComponent implements OnInit, OnChanges {
       this.hideRowField = true;
     }
   }
+
+
   private getText(): void {
     this.userService.getTextContent()
       .subscribe((data: TextPageContent) => {
@@ -55,6 +58,17 @@ export class TextComponent implements OnInit, OnChanges {
     this.getText();
   }
   ngOnChanges() {
+  }
+
+  uploadResponse(file, type) {
+    switch (type) {
+      case 'topBlockMedia':
+        this.textContent.topMediaBlock = file;
+        break;
+      case 'bottomBlockMedia':
+        this.textContent.bottomMediaBlock = file;
+        break;
+    }
   }
 
 }

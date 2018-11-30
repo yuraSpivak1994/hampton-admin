@@ -19,6 +19,7 @@ import {TokenInterceptor} from './shared/interceptor/token.interceptor';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {EditorModule} from 'primeng/editor';
 import {FroalaEditorModule, FroalaViewModule} from 'angular-froala-wysiwyg';
+import {NgxUploaderModule} from 'ngx-uploader';
 
 
 @NgModule({
@@ -43,6 +44,7 @@ import {FroalaEditorModule, FroalaViewModule} from 'angular-froala-wysiwyg';
     EditorModule,
     FroalaEditorModule.forRoot(),
     FroalaViewModule.forRoot(),
+    NgxUploaderModule
   ],
   providers: [UserGuard,
     {

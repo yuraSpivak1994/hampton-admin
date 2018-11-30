@@ -11,8 +11,7 @@
     .btn-box {
       display: flex;
 
-      .save-policy-btn,
-      .edit-policy-btn {
+      .save-policy-btn {
         width: 100%;
         margin-top: 5px;
         padding: 2.5vh 25px;
@@ -21,34 +20,17 @@
         background-color: #6e6e6e;
         color: white;
       }
-
-      .edit-policy-btn {
-        background: #becb79;
-      }
     }
   }
-  .popup-policy {
-    width: 100%;
-    position: absolute;
-    top: 0;
-    background: white;
-    height: 100vh;
-    z-index: 11111;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    .close-image {
-      right: 10px;
-      top: 22px;
-      position: absolute;
-      width: 25px;
-      height: 25px;
-      cursor: pointer;
-    }
+}
+::ng-deep {
+  .fr-box.fr-basic .fr-element {
+    min-height: 100px;
   }
-  .hide-popup {
-    height: 0;
-    overflow: hidden;
+  .fr-toolbar {
+    border-top: 5px solid #dca5c5;
+  }
+  .fr-quick-insert {
+    display: none;
   }
 }

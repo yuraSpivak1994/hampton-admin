@@ -1,21 +1,11 @@
 <div class="container">
   <div class="row-box">
-    <textarea name="" id="" cols="30" rows="10"></textarea>
+    <textarea
+      [froalaEditor]="options"
+      [(ngModel)]="contentBio.pinkBlockText"
+    ></textarea>
     <div class="btn-box">
       <button class="save-policy-btn">save policy</button>
-      <button class="edit-policy-btn" (click)="trigerPopup()">edit policy</button>
-    </div>
-  </div>
-
-  <div class="popup-policy" [ngClass]="{'hide-popup': popupPrivacy}">
-    <div class="close-image" (click)="trigerPopup()">
-      <img src="../../assets/cancel.png" alt="">
-    </div>
-    <div class="row-box">
-      <textarea name=""  cols="30" rows="10"></textarea>
-      <div class="btn-box">
-        <button class="save-policy-btn">save policy</button>
-      </div>
     </div>
   </div>
 </div>

@@ -1,6 +1,6 @@
 export class TextPageContent {
 
-  title = 'lol';
+  title: string;
   topMediaBlock: any;
   description: string;
   bottomMediaBlock: any;

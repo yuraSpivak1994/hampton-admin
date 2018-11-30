@@ -24,8 +24,7 @@
     .btn-box {
       display: flex;
 
-      .save-bio-btn,
-      .edit-text-btn {
+      .save-bio-btn {
         width: 100%;
         padding: 2.4vh 25px;
         display: inline-block;
@@ -36,54 +35,7 @@
         margin-top: 5px;
         font-size: 16px;
       }
-      [disabled]{
-        border: 1px solid #999999;
-        background-color: #be9999;
-        color: #666666;
-        cursor: not-allowed;
-      }
-      .edit-text-btn {
-        background: #becb79;
-      }
     }
-  }
-
-  .popup-container {
-    width: 100%;
-    position: absolute;
-    top: 0;
-    background: white;
-    height: 100vh;
-    z-index: 11111;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    .close-image {
-      right: 10px;
-      top: 22px;
-      position: absolute;
-      width: 25px;
-      height: 25px;
-      cursor: pointer;
-    }
-
-    .save-bio-btn {
-      width: 100%;
-      padding: 2.4vh 25px;
-      display: inline-block;
-      border: 1px solid #ccc;
-      background-color: #6e6e6e;
-      color: white;
-      cursor: pointer;
-      margin-top: 5px;
-      font-size: 16px;
-    }
-  }
-  .hide-popup {
-    height: 0;
-    overflow: hidden;
-    display: none;
   }
 }
 .has-error {
