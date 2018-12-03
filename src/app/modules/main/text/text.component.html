@@ -7,6 +7,7 @@
     [ngClass]="{'hide-file-uploader': hideRowImage}">
     <span>upload image</span>
     <input type="text" class="field-video" placeholder="header" [(ngModel)]="textContent.title">
+    <img src="{{textContent.topMediaBlock}}" alt="">
     <input type="file" name="file"
            class="inputfile" id="file"
            ngFileSelect [options]="options"
@@ -17,6 +18,7 @@
     <textarea
       [froalaEditor]='configs'
       [(froalaModel)]="textContent.description"></textarea>
+    <img src="{{textContent.bottomMediaBlock}}" alt="">
     <input type="file" name="file"
            id="file2" ngFileSelect
            [options]="options" class="inputfile"
@@ -35,7 +37,7 @@
     <textarea [froalaEditor]='configs' [(froalaModel)]="textContent.description"></textarea>
     <input type="text" class="field-video" [(ngModel)]="textContent.bottomMediaBlock">
     <div class="btn-box">
-      <button class="save-text-btn">save text</button>
+      <button class="save-text-btn" (click)="saveChanges()">save text</button>
     </div>
   </div>
 </div>

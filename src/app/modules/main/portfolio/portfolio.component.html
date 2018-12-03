@@ -1,5 +1,26 @@
 <div class="container">
-  <div class="row-box">
+  <div class="togle-rows">
+    <button class="add-portfolio" (click)="trigerUploader()">
+      <span [ngClass]="{'hide-url-uploader': hideRowImage}">add portfolio</span>
+      <span [ngClass]="{'hide-file-uploader': hideRowField}">show portfolio</span>
+    </button>
+  </div>
+  <div class="portfolio-container" [ngClass]="{'hide-url-uploader': hideRowImage}">
+    <div class="items">
+      <div class="item">
+        <img src="../../../../assets/onInit.PNG" alt="img" class="image-url">
+        <p class="field">2212</p>
+        <p class="field">title</p>
+        <p class="field">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque consequatur culpa dolor
+          dolores ea eum eveniet facilis, hic ipsum magni minus provident, quasi quia ratione reprehenderit sapiente
+          velit veniam voluptate?</p>
+        <button class="delete-btn">delete</button>
+        <button class="delete-btn edit-btn" (click)="popup = true">edit</button>
+      </div>
+    </div>
+  </div>
+  <div class="row-box"
+       [ngClass]="{'hide-file-uploader': hideRowField}">
     <div class="file-box">
       <input type="file" name="file" id="file" class="inputfile"/>
       <label for="file">+</label>
@@ -7,32 +28,33 @@
     <div class="fields-box">
       <input type="text" class="text-field" placeholder="year">
       <input type="text" class="text-field" placeholder="title">
-      <textarea cols="52" rows="1" class="text-field"> description</textarea>
-      <div class="btn-box">
-      <button class="portfolio-btn save">save portfolio</button>
-        <button class="portfolio-btn delete">delete portfolio</button>
-        <button class="portfolio-btn edit">edit portfolio</button>
-      </div>
-    </div>
-  </div>
-  <div class="row-box">
-    <div class="file-box url-field">
-      <input type="text"  class="field-video" placeholder="Url">
-    </div>
-    <div class="fields-box">
-      <input type="text" class="text-field" placeholder="year">
-      <input type="text" class="text-field" placeholder="title">
-      <textarea cols="52" rows="1" class="text-field"> description</textarea>
+      <textarea
+        [froalaEditor]="options"
+      ></textarea>
       <div class="btn-box">
         <button class="portfolio-btn save">save portfolio</button>
-        <button class="portfolio-btn delete">delete portfolio</button>
-        <button class="portfolio-btn edit">edit portfolio</button>
       </div>
     </div>
   </div>
-
-
-  <div class="popup-portfolio">
-
+  <div class="popup" *ngIf="popup">
+    <div class="close-box">
+      <img src="../../../../assets/cancel.png" alt="cancel" (click)="popup = false">
+    </div>
+    <div class="row-box">
+      <div class="file-box">
+        <input type="file" name="file" id="file2" class="inputfile"/>
+        <label for="file2">+</label>
+      </div>
+      <div class="fields-box">
+        <input type="text" class="text-field" placeholder="year">
+        <input type="text" class="text-field" placeholder="title">
+        <textarea
+          [froalaEditor]="options"
+        ></textarea>
+        <div class="btn-box">
+          <button class="portfolio-btn save">save portfolio</button>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

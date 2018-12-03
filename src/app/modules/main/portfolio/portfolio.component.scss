@@ -1,23 +1,72 @@
 .container {
   width: 100%;
   display: flex;
+  flex-direction: column;
   justify-content: space-around;
-  @media screen and(max-width: 900px){
+  align-items: center;
+  font-family: sans-serif;
+  @media screen and(max-width: 900px) {
     flex-direction: column;
+  }
+  .togle-rows {
+    margin: 20px auto;
+    cursor: pointer;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+
+    .add-portfolio {
+          margin: 0 auto;
+          width: 200px;
+          padding: 2.5vh 25px;
+          display: inline-block;
+          border: 1px solid #ccc;
+          background-color: #dca5c5;
+          color: white;
+          cursor: pointer;
+        }
+  }
+  .portfolio-container {
+    display: flex;
+    .items {
+      display: flex;
+
+      .item {
+        width: 300px;
+
+        .field {
+          width: 100%;
+          padding: 10px 0;
+          border: 1px solid #80808063;
+        }
+        .delete-btn {
+          width: 100%;
+          padding: 2.5vh 25px;
+          display: inline-block;
+          border: 1px solid #ccc;
+          background-color: #c74242;
+          color: white;
+          cursor: pointer;
+        }
+        .edit-btn {
+          background: #426cc7;
+        }
+      }
+    }
   }
 
 
   .row-box {
     max-width: 40%;
     display: flex;
-    margin: 20px auto;
+    margin: 100px auto;
     @media screen and(max-width: 900px){
       max-width: 100%;
+      margin: 20px auto;
       @media screen and(max-width: 370px){
         width: 100%;
       }
     }
-
 
     .file-box {
       max-width: 200px;
@@ -95,10 +144,6 @@
         background: #becb79;
         border: 1px solid #becb79;
       }
-      .delete {
-        background: #9b4242;
-        border: 1px solid #9b4242;
-      }
     }
     .field-video {
       width: 100%;
@@ -113,4 +158,41 @@
       justify-content: center;
     }
   }
+  .hide-url-uploader{
+    display: none;
+  }
+  .hide-file-uploader {
+    display: none;
+  }
+
+  .popup {
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    background-color: whitesmoke;
+    z-index: 99999;
+    top: 0;
+
+    .close-box {
+      justify-content: flex-end;
+      display: flex;
+
+      img {
+        padding: 10px;
+      }
+    }
+  }
 }
+
+::ng-deep {
+  .fr-box.fr-basic .fr-element {
+    min-height: 100px;
+  }
+  .fr-toolbar {
+    border-top: 5px solid #dca5c5;
+  }
+  .fr-quick-insert {
+    display: none;
+  }
+}
+
