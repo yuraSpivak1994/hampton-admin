@@ -1,6 +1,5 @@
 import {UploadOutput, UploadInput, UploadFile, humanizeBytes, UploaderOptions} from 'ngx-uploader';
 import {EventEmitter} from '@angular/core';
-import {TextPageContent} from '../../shared/models/user.model';
 
 export class UploadImg {
   fileUploaded: any;
@@ -17,7 +16,6 @@ export class UploadImg {
     this.uploadInput = new EventEmitter<UploadInput>(); // input events, we use this to emit data to ngx-uploader
     this.humanizeBytes = humanizeBytes;
   }
-  public textContent = new TextPageContent();
 
   // Upload IMG
   onUploadOutput(output: UploadOutput, type): void {

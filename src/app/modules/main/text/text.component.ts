@@ -19,14 +19,25 @@ export class TextComponent extends UploadImg implements OnInit, OnChanges {
       'fontFamily', 'fontSize', 'color', '|', '|', 'paragraphStyle', 'lineHeight', '|', '|',
       '|', '|', '|', '|', '|', '|', '-', '|', '|', '-', '|',
       '|', '|', '|', '|', '|', '|',
-      '|', '|', '|', '|', '|', '|', '|', '|', '|', '|', '|', '|']
+      '|', '|', '|', '|', '|', '|', '|', '|', '|', '|', '|', '|'],
+    htmlAllowedTags: ['a', 'abbr', 'address', 'area', 'article', 'aside', 'audio', 'b', 'base', 'bdi', 'bdo',
+      'blockquote', 'br', 'button', 'canvas', 'caption', 'cite', 'code', 'col', 'colgroup', 'datalist', 'dd',
+      'del', 'details', 'dfn', 'dialog', 'div', 'dl', 'dt', 'em', 'embed', 'fieldset', 'figcaption', 'figure',
+      'footer', 'form', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'header', 'hgroup', 'hr', 'i', 'iframe', 'img',
+      'input', 'ins', 'kbd', 'keygen', 'label', 'legend', 'li', 'link', 'main', 'map', 'mark', 'menu', 'menuitem',
+      'meter', 'nav', 'noscript', 'object', 'ol', 'optgroup', 'option', 'output', 'p', 'param', '-', 'progress', 'queue',
+      'rp', 'rt', 'ruby', 's', 'samp', 'script', 'style', 'section', 'select', 'small', 'source', 'span', 'strike', 'strong',
+      'sub', 'summary', 'sup', 'table', 'tbody', 'td', 'textarea', 'tfoot', 'th', 'thead', 'time', 'title', 'tr', 'track',
+      'u', 'ul', 'var', 'video', 'wbr']
   };
   public content: any;
+
   constructor(private userService: UserService) {
     super();
     this.hideRowField = true;
     this.hideRowImage = false;
   }
+
   public textContent = new TextPageContent();
 
   public trigerUploader() {
@@ -43,9 +54,10 @@ export class TextComponent extends UploadImg implements OnInit, OnChanges {
   private getText(): void {
     this.userService.getTextContent()
       .subscribe((data: TextPageContent) => {
-        this.textContent =  data;
+        this.textContent = data;
       });
   }
+
   public saveChanges() {
     this.userService.updateText(this.textContent).subscribe((res: any) => {
       this.getText();
@@ -57,6 +69,7 @@ export class TextComponent extends UploadImg implements OnInit, OnChanges {
   ngOnInit() {
     this.getText();
   }
+
   ngOnChanges() {
   }
 

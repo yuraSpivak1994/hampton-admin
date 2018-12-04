@@ -22,17 +22,25 @@
   <div class="row-box"
        [ngClass]="{'hide-file-uploader': hideRowField}">
     <div class="file-box">
-      <input type="file" name="file" id="file" class="inputfile"/>
+      <input type="file" name="file"
+             class="inputfile" id="file"
+             ngFileSelect [options]="options"
+             (uploadOutput)="onUploadOutput($event, 'topBlockMedia')"
+             [uploadInput]="uploadInput"
+      >
       <label for="file">+</label>
     </div>
     <div class="fields-box">
-      <input type="text" class="text-field" placeholder="year">
-      <input type="text" class="text-field" placeholder="title">
+      <input type="text" class="text-field" placeholder="year" [(ngModel)]="portfolioContent.date" (blur)="transformDate(portfolioContent.date)">
+      <!--<input type="text" class="text-field" placeholder="year" [(ngModel)]="portfolioContent.date" >-->
+
+      <input type="text" class="text-field" placeholder="title" [(ngModel)]="portfolioContent.title">
       <textarea
-        [froalaEditor]="options"
+        [froalaEditor]="configs"
+        [(froalaModel)]="portfolioContent.description"
       ></textarea>
       <div class="btn-box">
-        <button class="portfolio-btn save">save portfolio</button>
+        <button class="portfolio-btn save" (click)="postPortfolio()">save portfolio</button>
       </div>
     </div>
   </div>
