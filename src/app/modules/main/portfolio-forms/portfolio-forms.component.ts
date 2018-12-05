@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {UploadImg} from '../../../shared/classes/upload-image';
+import {UserService} from '../../../shared/services/user.service';
 
 @Component({
   selector: 'app-portfolio-forms',
@@ -7,6 +8,7 @@ import {UploadImg} from '../../../shared/classes/upload-image';
   styleUrls: ['./portfolio-forms.component.scss']
 })
 export class PortfolioFormsComponent extends UploadImg implements OnInit {
+  public item: any;
   public configs: any = {
     placeholderText: 'Edit Your Content Here!',
     charCounterCount: false,
@@ -17,11 +19,24 @@ export class PortfolioFormsComponent extends UploadImg implements OnInit {
       '|', '|', '|', '|', '|', '|', '|', '|', '|', '|', '|', '|']
   };
 
-  constructor() {
+  constructor(private userService: UserService) {
     super();
+    this.item = {
+      media: '',
+      description: '',
+      title: '',
+      date: null
+    };
+  }
+
+  save(item) {
+    this.userService.addPortfolio(item);
   }
 
   ngOnInit() {
+  }
+  uploadResponse(file, type) {
+    this.item.media = file;
   }
 
 }

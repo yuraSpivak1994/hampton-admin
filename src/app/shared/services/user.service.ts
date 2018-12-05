@@ -40,9 +40,10 @@ export class UserService {
     return this.http.post(`${this.apiUrl}account/token`, {login: login, password: password});
   }
 
-  getBioContent () {
+  getBioContent() {
     return this.http.get(`${this.apiUrl}biography`);
   }
+
   updateBio(clonedData) {
     clonedData = {
       ...clonedData,
@@ -52,9 +53,10 @@ export class UserService {
     return this.http.put(`${this.apiUrl}biography`, clonedData);
   }
 
-  getTextContent () {
+  getTextContent() {
     return this.http.get(`${this.apiUrl}text`);
   }
+
   updateText(clonedData) {
     clonedData = {
       ...clonedData,
@@ -62,13 +64,17 @@ export class UserService {
     };
     return this.http.put(`${this.apiUrl}text`, clonedData);
   }
-  getPortfolioContent () {
-    return this.http.get(`${this.apiUrl}portfolio/all/1/1`);
-  }
-  addPortfolio(portfolio) {
-    return this.http.post(`${this.apiUrl}portfolio`, {portfolio});
+
+  getPortfolioContent() {
+    return this.http.get(`${this.apiUrl}portfolio/all/0/2`);
   }
 
+  addPortfolio(portfolio) {
+    this.http.post(`${this.apiUrl}portfolio`, portfolio).subscribe(e => {
+    }, err => {
+      console.log(err);
+    });
+  }
 
 
   initAuthorization(): void {

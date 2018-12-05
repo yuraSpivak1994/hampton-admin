@@ -18,7 +18,8 @@ const routes: Routes = [
       {path: 'text', component: TextComponent},
       {path: 'privacy-policy', component: PrivacyPolicyComponent},
       {path: 'portfolio', component: PortfolioComponent},
-      {path: 'portfolio-forms', component: PortfolioFormsComponent}
+      {path: 'create-item', component: PortfolioFormsComponent},
+      {path: 'portfolio/:id', component: PortfolioFormsComponent}
     ]}
 ];
 

@@ -9,52 +9,19 @@ import {UploadImg} from '../../../shared/classes/upload-image';
   styleUrls: ['./portfolio.component.scss']
 })
 export class PortfolioComponent  extends UploadImg  implements OnInit {
-  public configs: any = {
-    placeholderText: 'Edit Your Content Here!',
-    charCounterCount: false,
-    toolbarButtons: ['|', 'bold', '|', 'underline', 'strikeThrough', '|', '|', '|',
-      'fontFamily', 'fontSize', 'color', '|', '|', 'paragraphStyle', 'lineHeight', '|', '|',
-      '|', '|', '|', '|', '|', '|', '-', '|', '|', '-', '|',
-      '|', '|', '|', '|', '|', '|',
-      '|', '|', '|', '|', '|', '|', '|', '|', '|', '|', '|', '|']
-  };
-  public hideRowImage: boolean;
-  public hideRowField: boolean;
-  public popup = false;
-  public  portfolioContent = new PortfolioPageContent();
-  public trigerUploader() {
-    if (this.hideRowField) {
-      this.hideRowImage = true;
-      this.hideRowField = false;
-    } else {
-      this.hideRowImage = false;
-      this.hideRowField = true;
-    }
-  }
+  public  portfolioContent = new PortfolioPageContent;
 
   constructor(private userService: UserService) {
     super();
-    this.hideRowField = true;
-    this.hideRowImage = false;
-    // this.portfolioContent.date = new Date(this.portfolioContent.date);
   }
 
   private getPortfolio(): void {
     this.userService.getPortfolioContent()
-      .subscribe((data: PortfolioPageContent) => {
+      .subscribe((data: any) => {
         this.portfolioContent = data;
-        console.log(data)
       }, err => {
         console.log(err);
       });
-  }
-  public postPortfolio() {
-    this.userService.addPortfolio(this.portfolioContent).subscribe((res: any) => {
-      this.getPortfolio();
-    }, err => {
-      alert(`ERORKA`);
-      console.log(err);
-    });
   }
   ngOnInit() {
     this.getPortfolio();
@@ -63,9 +30,4 @@ export class PortfolioComponent  extends UploadImg  implements OnInit {
   uploadResponse(file, type) {
     this.portfolioContent.media = file;
   }
-
-  // transformDate(date) {
-  //   this.portfolioContent.date = new Date(date);
-  // }
-
 }
