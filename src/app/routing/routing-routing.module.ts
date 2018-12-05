@@ -7,6 +7,7 @@ import {AuthorizationComponent} from '../modules/authorization/authorization.com
 import {PortfolioComponent} from '../modules/main/portfolio/portfolio.component';
 import {MainComponent} from '../modules/main/main.component';
 import {UserGuard} from '../shared/guards/user.guard';
+import {PortfolioFormsComponent} from '../modules/main/portfolio-forms/portfolio-forms.component';
 
 
 const routes: Routes = [
@@ -16,7 +17,8 @@ const routes: Routes = [
       {path: 'bio', component: BioComponent},
       {path: 'text', component: TextComponent},
       {path: 'privacy-policy', component: PrivacyPolicyComponent},
-      {path: 'portfolio', component: PortfolioComponent}
+      {path: 'portfolio', component: PortfolioComponent},
+      {path: 'portfolio-forms', component: PortfolioFormsComponent}
     ]}
 ];
 

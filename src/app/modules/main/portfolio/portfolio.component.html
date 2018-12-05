@@ -9,7 +9,7 @@
     <div class="items">
       <div class="item">
         <img src="../../../../assets/onInit.PNG" alt="img" class="image-url">
-        <p class="field">2212</p>
+        <p class="field"></p>
         <p class="field">title</p>
         <p class="field">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque consequatur culpa dolor
           dolores ea eum eveniet facilis, hic ipsum magni minus provident, quasi quia ratione reprehenderit sapiente
@@ -31,8 +31,8 @@
       <label for="file">+</label>
     </div>
     <div class="fields-box">
-      <input type="text" class="text-field" placeholder="year" [(ngModel)]="portfolioContent.date" (blur)="transformDate(portfolioContent.date)">
-      <!--<input type="text" class="text-field" placeholder="year" [(ngModel)]="portfolioContent.date" >-->
+      <!--<input type="date" class="text-field" placeholder="year" [(ngModel)]="portfolioContent.date" (blur)="transformDate(portfolioContent.date)">-->
+      <input type="date" class="text-field" placeholder="year" [(ngModel)]="portfolioContent.date" >
 
       <input type="text" class="text-field" placeholder="title" [(ngModel)]="portfolioContent.title">
       <textarea
@@ -57,7 +57,7 @@
         <input type="text" class="text-field" placeholder="year">
         <input type="text" class="text-field" placeholder="title">
         <textarea
-          [froalaEditor]="options"
+          [froalaEditor]="configs"
         ></textarea>
         <div class="btn-box">
           <button class="portfolio-btn save">save portfolio</button>
@@ -65,4 +65,5 @@
       </div>
     </div>
   </div>
+  <app-portfolio-forms></app-portfolio-forms>
 </div>

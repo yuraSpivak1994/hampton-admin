@@ -63,10 +63,9 @@ export class UserService {
     return this.http.put(`${this.apiUrl}text`, clonedData);
   }
   getPortfolioContent () {
-    return this.http.get(`${this.apiUrl}portfolio/all`);
+    return this.http.get(`${this.apiUrl}portfolio/all/1/1`);
   }
   addPortfolio(portfolio) {
-    debugger
     return this.http.post(`${this.apiUrl}portfolio`, {portfolio});
   }
 

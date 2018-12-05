@@ -43,16 +43,17 @@ export class PortfolioComponent  extends UploadImg  implements OnInit {
     this.userService.getPortfolioContent()
       .subscribe((data: PortfolioPageContent) => {
         this.portfolioContent = data;
+        console.log(data)
       }, err => {
         console.log(err);
       });
   }
   public postPortfolio() {
     this.userService.addPortfolio(this.portfolioContent).subscribe((res: any) => {
-      debugger
       this.getPortfolio();
     }, err => {
       alert(`ERORKA`);
+      console.log(err);
     });
   }
   ngOnInit() {
@@ -63,8 +64,8 @@ export class PortfolioComponent  extends UploadImg  implements OnInit {
     this.portfolioContent.media = file;
   }
 
-  transformDate(date) {
-    this.portfolioContent.date = new Date(date);
-  }
+  // transformDate(date) {
+  //   this.portfolioContent.date = new Date(date);
+  // }
 
 }
