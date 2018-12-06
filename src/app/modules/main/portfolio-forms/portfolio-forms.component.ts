@@ -19,21 +19,22 @@ export class PortfolioFormsComponent extends UploadImg implements OnInit {
       '|', '|', '|', '|', '|', '|', '|', '|', '|', '|', '|', '|']
   };
 
-  constructor(private userService: UserService) {
+  constructor(public userService: UserService) {
     super();
-    this.item = {
-      media: '',
-      description: '',
-      title: '',
-      date: null
-    };
   }
 
   save(item) {
     this.userService.addPortfolio(item);
+
   }
 
   ngOnInit() {
+    /*this.userService.item = {
+      media: '',
+      description: '',
+      title: '',
+      date: null
+    };*/
   }
   uploadResponse(file, type) {
     this.item.media = file;

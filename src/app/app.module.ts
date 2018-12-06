@@ -21,6 +21,7 @@ import {EditorModule} from 'primeng/editor';
 import {FroalaEditorModule, FroalaViewModule} from 'angular-froala-wysiwyg';
 import {NgxUploaderModule} from 'ngx-uploader';
 import {PortfolioFormsComponent} from './modules/main/portfolio-forms/portfolio-forms.component';
+import {NgxPaginationModule} from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,8 @@ import {PortfolioFormsComponent} from './modules/main/portfolio-forms/portfolio-
     EditorModule,
     FroalaEditorModule.forRoot(),
     FroalaViewModule.forRoot(),
-    NgxUploaderModule
+    NgxUploaderModule,
+    NgxPaginationModule
   ],
   providers: [UserGuard,
     {

@@ -9,15 +9,15 @@
     <label for="file">+</label>
   </div>
   <div class="fields-box">
-    <input type="date" class="text-field" placeholder="year" [(ngModel)]="item.date">
+    <input type="date" class="text-field" placeholder="year" [(ngModel)]="userService.item.date">
 
-    <input type="text" class="text-field" placeholder="title" [(ngModel)]="item.title">
+    <input type="text" class="text-field" placeholder="title" [(ngModel)]="userService.item.title">
     <textarea
       [froalaEditor]="configs"
-      [(ngModel)]="item.description"
+      [(ngModel)]="userService.item.description"
     ></textarea>
     <div class="btn-box">
-      <button class="" (click)="save(item)">save portfolio</button>
+      <button class="" (click)="save(userService.item)" >save portfolio</button>
     </div>
   </div>
 </div>

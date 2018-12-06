@@ -10,11 +10,15 @@
   }
   .portfolio-container {
     display: flex;
+
     .items {
       display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
 
       .item {
         width: 300px;
+        margin: 20px;
 
         .field {
           width: 100%;

@@ -9,9 +9,12 @@ constructor() {
   }
 }
 export class PortfolioPageContent {
-  media: string;
-  description: string;
-  title: string;
-  date: any;
+  portfolioCount: number;
+  portfolios: [{
+    media: any;
+    description: string;
+    title: string;
+    date: any;
+  }]
   constructor(){}
 }

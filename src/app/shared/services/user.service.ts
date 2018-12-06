@@ -14,6 +14,13 @@ export class UserService {
     this.initAuthorization();
   }
 
+  item = {
+    id: null,
+    media: '',
+    description: '',
+    title: '',
+    date: ''
+  };
 
   setAuthData(user): void {
     this._authData = user;
@@ -65,15 +72,24 @@ export class UserService {
     return this.http.put(`${this.apiUrl}text`, clonedData);
   }
 
-  getPortfolioContent() {
-    return this.http.get(`${this.apiUrl}portfolio/all/0/2`);
+  getPortfolioContent(pageActual) {
+    return this.http.get(`${this.apiUrl}portfolio/all/0/${pageActual}`);
   }
 
   addPortfolio(portfolio) {
-    this.http.post(`${this.apiUrl}portfolio`, portfolio).subscribe(e => {
+    debugger
+    this.http.put(`${this.apiUrl}portfolio`, portfolio).subscribe(res => {
+
     }, err => {
       console.log(err);
     });
+  }
+
+  getPortfilioItem(item) {
+    this.item = item;
+  }
+  deletePortfolioItem(id) {
+    return this.http.delete(`${this.apiUrl}portfolio?id=${id}`);
   }
 
 
