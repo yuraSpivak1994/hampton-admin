@@ -13,15 +13,6 @@ export class UserService {
     this.apiUrl = Config.apiUrl();
     this.initAuthorization();
   }
-
-  item = {
-    id: null,
-    media: '',
-    description: '',
-    title: '',
-    date: ''
-  };
-
   setAuthData(user): void {
     this._authData = user;
     localStorage.AuthUser = JSON.stringify(user);
@@ -77,16 +68,10 @@ export class UserService {
   }
 
   addPortfolio(portfolio) {
-    debugger
-    this.http.put(`${this.apiUrl}portfolio`, portfolio).subscribe(res => {
-
-    }, err => {
-      console.log(err);
-    });
+   return this.http.post(`${this.apiUrl}portfolio`, portfolio);
   }
-
-  getPortfilioItem(item) {
-    this.item = item;
+  updatePortfolio(portfolio) {
+    return this.http.put(`${this.apiUrl}portfolio`, portfolio);
   }
   deletePortfolioItem(id) {
     return this.http.delete(`${this.apiUrl}portfolio?id=${id}`);

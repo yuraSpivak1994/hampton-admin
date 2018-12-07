@@ -1,5 +1,6 @@
 import {UploadOutput, UploadInput, UploadFile, humanizeBytes, UploaderOptions} from 'ngx-uploader';
 import {EventEmitter} from '@angular/core';
+import {PortfolioPageContent} from '../models/user.model';
 
 export class UploadImg {
   fileUploaded: any;
@@ -57,8 +58,7 @@ export class UploadImg {
   }
 
 
-  uploadResponse(file, type) {
-  }
+  uploadResponse(file, type): void {}
 
   cancelUpload(id: string): void {
     this.uploadInput.emit({type: 'cancel', id: id});

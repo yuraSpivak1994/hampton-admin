@@ -1,5 +1,10 @@
 <div class="container">
-  <button>add portfolio</button>
+  <div class="togle-rows">
+    <button class="add-portfolio" (click)="trigerUploader()">
+      <span [ngClass]="{'hide-url-uploader': hideRowImage}">add portfolio</span>
+      <span [ngClass]="{'hide-file-uploader': hideRowField}">show portfolio</span>
+    </button>
+  </div>
   <div class="portfolio-container" [ngClass]="{'hide-url-uploader': hideRowImage}">
     <div class="items">
       <div class="item" *ngFor="let item of portfolioContent.portfolios">
@@ -8,9 +13,59 @@
         <p class="field">{{item.title}}</p>
         <p class="field" [innerHtml]="item.description"></p>
         <button class="delete-btn" (click)="deletePortfolio(item.id)">delete</button>
-        <button class="delete-btn edit-btn" routerLink="/main/portfolio-edit"
-                (click)="userService.getPortfilioItem(item)">edit</button>
+        <button class="delete-btn edit-btn"  (click)="openEdit(item)">edit</button>
     </div>
       </div>
+  </div>
+  <div class="row-box"
+       [ngClass]="{'hide-file-uploader': hideRowField}">
+    <img [src]="portfolios.media" alt="" class="media-popup">
+    <div class="file-box">
+      <input type="file" name="file"
+             class="inputfile" id="file"
+             ngFileSelect [options]="options"
+             (uploadOutput)="onUploadOutput($event, 'topBlockMedia')"
+             [uploadInput]="uploadInput"
+      >
+      <label for="file">+</label>
+    </div>
+    <div class="fields-box">
+      <input type="date" class="text-field" placeholder="year" [(ngModel)]="portfolios.date">
+      <input type="text" class="text-field" placeholder="title" [(ngModel)]="portfolios.title">
+      <textarea
+        [froalaEditor]="configs"
+        [(ngModel)]="portfolios.description"
+      ></textarea>
+      <div class="btn-box">
+        <button class="portfolio-btn save" (click)="addPortfolio()">save portfolio</button>
+      </div>
+    </div>
+  </div>
+  <div class="popup" *ngIf="popup">
+    <div class="close-box">
+      <img src="../../../../assets/cancel.png" alt="cancel" (click)="popup = false">
+    </div>
+    <div class="row-box">
+      <img src="{{portfolios.media}}" alt="" class="media-popup">
+      <div class="file-box">
+        <input type="file" name="file"
+               class="inputfile" id="file3"
+               ngFileSelect [options]="options"
+               (uploadOutput)="onUploadOutput($event, 'topBlockMedia')"
+               [uploadInput]="uploadInput"/>
+        <label for="file3">+</label>
+      </div>
+      <div class="fields-box">
+        <input type="text" class="text-field" placeholder="year" [(ngModel)]="portfolios.date">
+        <input type="text" class="text-field" placeholder="title" [(ngModel)]="portfolios.title">
+        <textarea
+          [froalaEditor]="configs"
+          [(ngModel)]="portfolios.description"
+        ></textarea>
+        <div class="btn-box">
+          <button class="portfolio-btn save" (click)="changePortfolio()">save portfolio</button>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

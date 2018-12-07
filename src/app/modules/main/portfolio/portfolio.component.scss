@@ -8,17 +8,34 @@
   @media screen and(max-width: 900px) {
     flex-direction: column;
   }
+  .togle-rows {
+    margin: 20px auto;
+    cursor: pointer;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+
+    .add-portfolio {
+          margin: 0 auto;
+          width: 200px;
+          padding: 2.5vh 25px;
+          display: inline-block;
+          border: 1px solid #ccc;
+          background-color: #dca5c5;
+          color: white;
+          cursor: pointer;
+        }
+  }
   .portfolio-container {
     display: flex;
-
     .items {
       display: flex;
-      justify-content: space-around;
       flex-wrap: wrap;
+      margin: 20px;
+      justify-content: space-around;
 
       .item {
         width: 300px;
-        margin: 20px;
 
         .field {
           width: 100%;
@@ -39,6 +56,138 @@
         }
       }
     }
+  }
+
+
+  .row-box {
+    max-width: 40%;
+    display: flex;
+    margin: 100px auto;
+    @media screen and(max-width: 900px){
+      max-width: 100%;
+      margin: 20px auto;
+      @media screen and(max-width: 370px){
+        width: 100%;
+      }
+    }
+
+    .file-box {
+      max-width: 200px;
+      min-width: 100px;
+      height: 96px;
+      @media screen and(max-width: 400px){
+        min-width: inherit;
+      }
+
+      .inputfile {
+        width: 0.1px;
+        height: 0.1px;
+        opacity: 0;
+        overflow: hidden;
+        position: absolute;
+        z-index: -1;
+      }
+      .inputfile + label {
+        width: 100%;
+        padding: 9.3vh 25px;
+        border: 1px solid #ccc;
+        box-sizing: border-box;
+        background-color: #dca5c5;
+        color: white;
+        text-align: center;
+        font-size: 30px;
+        display: flex;
+        justify-content: center;
+      }
+
+      .inputfile + label:hover {
+        background-color: #a66c8d;
+        cursor: pointer;
+      }
+    }
+    .url-field {
+      max-width: 120px;
+      @media screen and(max-width: 400px){
+        min-width: 70px;
+      }
+    }
+    .fields-box {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+
+      .text-field {
+        width: 100%;
+        padding: 2.5vh 25px;
+        display: inline-block;
+        border: 1px solid #ccc;
+        box-sizing: border-box;
+      }
+
+      .btn-box {
+        display: flex;
+      }
+
+      .portfolio-btn {
+        width: 100%;
+        padding: 2.5vh 25px;
+        display: inline-block;
+        border: 1px solid #ccc;
+        background-color: #6e6e6e;
+        color: white;
+        cursor: pointer;
+        margin-top: 5px;
+      }
+      .portfolio-btn {
+        @media screen and(max-width: 400px){
+          padding: 2.5vh 16px;
+        }
+      }
+      .edit {
+        background: #becb79;
+        border: 1px solid #becb79;
+      }
+    }
+    .field-video {
+      width: 100%;
+      padding: 9.2vh 25px;
+      border: 1px solid #ccc;
+      box-sizing: border-box;
+      background-color: #dca5c5;
+      color: white;
+      text-align: left;
+      font-size: 30px;
+      display: flex;
+      justify-content: center;
+    }
+  }
+  .hide-url-uploader{
+    display: none;
+  }
+  .hide-file-uploader {
+    display: none;
+  }
+
+  .popup {
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    background-color: whitesmoke;
+    z-index: 99999;
+    top: 0;
+
+    .close-box {
+      justify-content: flex-end;
+      display: flex;
+
+      img {
+        padding: 10px;
+      }
+    }
+  }
+  .media-popup {
+    max-width: 100px;
+    max-height: 100px;
   }
 }
 

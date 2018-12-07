@@ -10,11 +10,20 @@ constructor() {
 }
 export class PortfolioPageContent {
   portfolioCount: number;
-  portfolios: [{
-    media: any;
-    description: string;
-    title: string;
-    date: any;
-  }]
-  constructor(){}
+  portfolios: Array<Portfolio>;
+}
+
+class Portfolio {
+  media: string;
+  description: string;
+  title: string;
+  date: any;
+  id?: any;
+}
+export class AddPopupFields {
+  media: string;
+  description: string;
+  title: string;
+  date: any;
+  id?: any;
 }
