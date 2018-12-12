@@ -64,7 +64,7 @@ export class UserService {
   }
 
   getPortfolioContent(pageActual) {
-    return this.http.get(`${this.apiUrl}portfolio/all/0/${pageActual}`);
+    return this.http.get(`${this.apiUrl}portfolio/all/?skip=0&limit=${pageActual}`);
   }
 
   addPortfolio(portfolio) {
@@ -74,7 +74,13 @@ export class UserService {
     return this.http.put(`${this.apiUrl}portfolio`, portfolio);
   }
   deletePortfolioItem(id) {
-    return this.http.delete(`${this.apiUrl}portfolio?id=${id}`);
+    return this.http.delete(`${this.apiUrl}portfolio?portfolioId=${id}`);
+  }
+  getPolicy() {
+    return this.http.get(`${this.apiUrl}policy`);
+  }
+  updatePolicy(policy) {
+    return this.http.put(`${this.apiUrl}policy`, policy);
   }
 
 

@@ -5,6 +5,7 @@
       <span [ngClass]="{'hide-file-uploader': hideRowField}">show portfolio</span>
     </button>
   </div>
+  <!--portfolios items-->
   <div class="portfolio-container" [ngClass]="{'hide-url-uploader': hideRowImage}">
     <div class="items">
       <div class="item" *ngFor="let item of portfolioContent.portfolios">
@@ -13,9 +14,13 @@
         <p class="field">{{item.title}}</p>
         <p class="field" [innerHtml]="item.description"></p>
         <button class="delete-btn" (click)="deletePortfolio(item.id)">delete</button>
-        <button class="delete-btn edit-btn"  (click)="openEdit(item)">edit</button>
-    </div>
+        <button class="delete-btn edit-btn" (click)="openEdit(item)">edit</button>
       </div>
+    </div>
+  </div>
+  <!--add portfolio-->
+  <div class="togle-rows" (click)="toggleUploader()">
+    <img src="./../../../../assets/change.png" alt="change">
   </div>
   <div class="row-box"
        [ngClass]="{'hide-file-uploader': hideRowField}">
@@ -26,8 +31,10 @@
              ngFileSelect [options]="options"
              (uploadOutput)="onUploadOutput($event, 'topBlockMedia')"
              [uploadInput]="uploadInput"
+             *ngIf="showImage"
       >
-      <label for="file">+</label>
+      <label for="file" *ngIf="showImage">+</label>
+      <input type="text" class="field-video" placeholder="video" *ngIf="showUrl" [(ngModel)]="currentUploadedImage">
     </div>
     <div class="fields-box">
       <input type="date" class="text-field" placeholder="year" [(ngModel)]="portfolios.date">
@@ -41,6 +48,7 @@
       </div>
     </div>
   </div>
+  <!--change portfolio-->
   <div class="popup" *ngIf="popup">
     <div class="close-box">
       <img src="../../../../assets/cancel.png" alt="cancel" (click)="popup = false">
@@ -54,9 +62,10 @@
                (uploadOutput)="onUploadOutput($event, 'topBlockMedia')"
                [uploadInput]="uploadInput"/>
         <label for="file3">+</label>
+        <input type="text" class="field-video" placeholder="video" [(ngModel)]="portfolios.media">
       </div>
       <div class="fields-box">
-        <input type="text" class="text-field" placeholder="year" [(ngModel)]="portfolios.date">
+        <input type="date" class="text-field" placeholder="year" [(ngModel)]="portfolios.date">
         <input type="text" class="text-field" placeholder="title" [(ngModel)]="portfolios.title">
         <textarea
           [froalaEditor]="configs"

@@ -14,8 +14,10 @@ export class PortfolioComponent extends UploadImg implements OnInit {
   public pageActual = 300;
   public hideRowImage: boolean;
   public hideRowField: boolean;
+  public showUrl: boolean;
+  public showImage: boolean;
   public popup = false;
-  public changeportfolio: any;
+  public cloneItemPortfolio: any;
   public portfolios = new AddPopupFields();
   public configs: any = {
     placeholderText: 'Edit Your Content Here!',
@@ -24,7 +26,16 @@ export class PortfolioComponent extends UploadImg implements OnInit {
       'fontFamily', 'fontSize', 'color', '|', '|', 'paragraphStyle', 'lineHeight', '|', '|',
       '|', '|', '|', '|', '|', '|', '-', '|', '|', '-', '|',
       '|', '|', '|', '|', '|', '|',
-      '|', '|', '|', '|', '|', '|', '|', '|', '|', '|', '|', '|']
+      '|', '|', '|', '|', '|', '|', '|', '|', '|', '|', '|', '|'],
+    htmlAllowedTags: ['a', 'abbr', 'address', 'area', 'article', 'aside', 'audio', 'b', 'base', 'bdi', 'bdo',
+      'blockquote', 'br', 'button', 'canvas', 'caption', 'cite', 'code', 'col', 'colgroup', 'datalist', 'dd',
+      'del', 'details', 'dfn', 'dialog', 'div', 'dl', 'dt', 'em', 'embed', 'fieldset', 'figcaption', 'figure',
+      'footer', 'form', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'header', 'hgroup', 'hr', 'i', 'iframe', 'img',
+      'input', 'ins', 'kbd', 'keygen', 'label', 'legend', 'li', 'link', 'main', 'map', 'mark', 'menu', 'menuitem',
+      'meter', 'nav', 'noscript', 'object', 'ol', 'optgroup', 'option', 'output', 'p', 'param', '-', 'progress', 'queue',
+      'rp', 'rt', 'ruby', 's', 'samp', 'script', 'style', 'section', 'select', 'small', 'source', 'span', 'strike', 'strong',
+      'sub', 'summary', 'sup', 'table', 'tbody', 'td', 'textarea', 'tfoot', 'th', 'thead', 'time', 'title', 'tr', 'track',
+      'u', 'ul', 'var', 'video', 'wbr']
   };
   public trigerUploader() {
     if (this.hideRowField) {
@@ -35,17 +46,21 @@ export class PortfolioComponent extends UploadImg implements OnInit {
       this.hideRowImage = false;
       this.hideRowField = true;
     }
+    this.getPortfolio();
+    this.clearFieldsPopup();
   }
   public openEdit(item) {
     this.popup = true;
     this.portfolios = item;
-    this.changeportfolio = item;
+    this.cloneItemPortfolio = item;
   }
 
   constructor(public userService: UserService) {
     super();
     this.hideRowField = true;
     this.hideRowImage = false;
+    this.showUrl = false;
+    this.showImage = true;
   }
 
   private getPortfolio(): void {
@@ -56,29 +71,40 @@ export class PortfolioComponent extends UploadImg implements OnInit {
         console.log(err);
       });
   }
-
   public deletePortfolio(id) {
-    this.userService.deletePortfolioItem(id).subscribe(() => {
+    this.userService.deletePortfolioItem(id).subscribe((res) => {
       this.getPortfolio();
     });
   }
-
   public addPortfolio() {
-    this.portfolios.media = this.currentUploadedImage
+    this.portfolios.media = this.currentUploadedImage;
     this.userService.addPortfolio(this.portfolios).subscribe((res) => {
     }, err => {
       console.log('pezda yakas');
     });
   }
   public changePortfolio() {
-    this.changeportfolio.media = this.currentUploadedImage
-    this.userService.updatePortfolio(this.changeportfolio)
+    this.cloneItemPortfolio.media = this.currentUploadedImage;
+    this.userService.updatePortfolio(this.cloneItemPortfolio)
       .subscribe((res) => {
       });
   }
-
   public get isImageAvailable(): boolean {
     return !!this.currentUploadedImage;
+  }
+  public  clearFieldsPopup() {
+    // this.portfolios.media = '';
+    // this.portfolios.title = '';
+    // this.portfolios.description = '';
+  }
+  public toggleUploader() {
+    if (this.showImage) {
+      this.showUrl = true;
+      this.showImage = false;
+    } else {
+      this.showUrl = false;
+      this.showImage = true;
+    }
   }
 
   ngOnInit() {

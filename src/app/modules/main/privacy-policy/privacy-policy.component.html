@@ -2,9 +2,10 @@
   <div class="row-box">
     <textarea
       [froalaEditor]="options"
+      [(froalaModel)]="policyContent.description">
     ></textarea>
     <div class="btn-box">
-      <button class="save-policy-btn">save policy</button>
+      <button class="save-policy-btn" (click)="saveChanges()">save policy</button>
     </div>
   </div>
 </div>
