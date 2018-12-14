@@ -9,7 +9,11 @@
   <div class="portfolio-container" [ngClass]="{'hide-url-uploader': hideRowImage}">
     <div class="items">
       <div class="item" *ngFor="let item of portfolioContent.portfolios">
-        <img src="{{item.media}}" alt="img" class="image-url">
+        <img *ngIf="!toggleImageToVideo(item.media)" src="{{item.media}}" alt="img" class="image-url">
+        <iframe *ngIf="toggleImageToVideo(item.media)" width="100%" height="auto" [src]="item.media | safe"
+                frameborder="0"
+                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen></iframe>
         <p class="field">{{item.date | date: 'yyy'}}</p>
         <p class="field">{{item.title}}</p>
         <p class="field" [innerHtml]="item.description"></p>

@@ -17,7 +17,13 @@ export class PortfolioComponent extends UploadImg implements OnInit {
   public showUrl: boolean;
   public showImage: boolean;
   public popup = false;
-  public cloneItemPortfolio: any;
+  public cloneItemPortfolio: {
+    media: {},
+    description: '',
+    title: '',
+    date: '',
+    id: '',
+  };
   public portfolios = new AddPopupFields();
   public configs: any = {
     placeholderText: 'Edit Your Content Here!',
@@ -104,6 +110,16 @@ export class PortfolioComponent extends UploadImg implements OnInit {
     } else {
       this.showUrl = false;
       this.showImage = true;
+    }
+  }
+
+  public toggleImageToVideo(item) {
+    const imageToVideo = new RegExp('(hamptonstudioblob.blob.core.windows.net\/images\/)');
+    const response = imageToVideo.test(item);
+    if (imageToVideo) {
+      return !response;
+    } else {
+      return;
     }
   }
 

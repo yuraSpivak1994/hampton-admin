@@ -21,6 +21,7 @@ import {EditorModule} from 'primeng/editor';
 import {FroalaEditorModule, FroalaViewModule} from 'angular-froala-wysiwyg';
 import {NgxUploaderModule} from 'ngx-uploader';
 import {NgxPaginationModule} from 'ngx-pagination';
+import {SafePipe} from './shared/pipe/pipe';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import {NgxPaginationModule} from 'ngx-pagination';
     AuthorizationComponent,
     HeaderComponent,
     MainComponent,
+    SafePipe
   ],
   imports: [
     BrowserModule,

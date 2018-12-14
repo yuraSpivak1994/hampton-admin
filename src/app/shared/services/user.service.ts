@@ -71,6 +71,7 @@ export class UserService {
    return this.http.post(`${this.apiUrl}portfolio`, portfolio);
   }
   updatePortfolio(portfolio) {
+    debugger
     return this.http.put(`${this.apiUrl}portfolio`, portfolio);
   }
   deletePortfolioItem(id) {
