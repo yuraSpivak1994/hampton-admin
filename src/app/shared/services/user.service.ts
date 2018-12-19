@@ -44,9 +44,7 @@ export class UserService {
 
   updateBio(clonedData) {
     clonedData = {
-      ...clonedData,
-      id: '8584c48fb3',
-      authorId: '0000001'
+      ...clonedData
     };
     return this.http.put(`${this.apiUrl}biography`, clonedData);
   }
@@ -57,8 +55,7 @@ export class UserService {
 
   updateText(clonedData) {
     clonedData = {
-      ...clonedData,
-      id: '8584c48fb4',
+      ...clonedData
     };
     return this.http.put(`${this.apiUrl}text`, clonedData);
   }
@@ -71,7 +68,6 @@ export class UserService {
    return this.http.post(`${this.apiUrl}portfolio`, portfolio);
   }
   updatePortfolio(portfolio) {
-    debugger
     return this.http.put(`${this.apiUrl}portfolio`, portfolio);
   }
   deletePortfolioItem(id) {

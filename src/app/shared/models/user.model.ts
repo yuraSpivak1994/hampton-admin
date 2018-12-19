@@ -1,5 +1,5 @@
 export class TextPageContent {
-
+  id: string;
   title: string;
   topMediaBlock: any;
   description: string;

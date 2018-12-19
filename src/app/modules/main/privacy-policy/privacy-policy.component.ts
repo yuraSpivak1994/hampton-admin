@@ -11,7 +11,7 @@ export class PrivacyPolicyComponent implements OnInit {
 
   public policyContent = {
     description: '',
-    id: '8534c49fg4'
+    id: ''
   };
 
   public options: any = {

@@ -10,6 +10,7 @@ export class BioComponent implements OnInit, OnChanges {
 
   public text: string;
   public contentBio: any = {
+    id: '',
     pinkBlockText: '',
     whiteBlockText: '',
   };
